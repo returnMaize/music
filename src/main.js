@@ -5,6 +5,11 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+import './style.scss'
+
+import http from './http'
+Vue.prototype.$http = http;
+
 new Vue({
   router,
   store,

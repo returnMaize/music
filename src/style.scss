@@ -1,0 +1,209 @@
+
+//reset 
+body {
+    margin: 0;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+li {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+
+html {
+    font-size: 14px;
+}
+
+$color: (
+    'primary': #1a73e8,
+    'gray1': #fafafa,
+    'gray2': rgba(26, 26, 26, 0.5),
+    'black': black,
+    'white': white
+);
+
+.w100 {
+    width: 100%;
+}
+
+//text color
+@each $key, $val in $color {
+    //text-primary : 
+    .text-#{$key} {
+        color: $val;
+    }
+    .bg-#{$key} {
+        background-color: $val;
+    }
+}
+
+//text layout
+@each $val in (left, center, right) {
+    .text-#{$val} {
+        text-align: $val;
+    }
+}
+
+//flex
+.d-flex {
+    display: flex;
+}
+.flex-grow-1 {
+    flex-grow: 1;
+}
+.flex-1 {
+    flex: 1;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+//jc-center 
+$flex-jc: (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    between: space-between,
+    around: space-around
+);
+@each $jcKey, $jcVal in $flex-jc {
+    //jc-center
+    .jc-#{$jcKey} {
+        justify-content: $jcVal;
+    }
+}
+//ai-center
+$flex-ai: (
+    start: flex-start,
+    end: flex-end,
+    center: center
+);
+@each $aiKey, $aiVal in $flex-ai {
+    .ai-#{$aiKey} {
+        align-items: $aiVal;
+    }
+}
+
+//text size
+$text-size-base: 1rem;
+$text-size: (
+    xs: 0.8571,
+    sm: 1,
+    md: 1.1429,
+    lg: 1.4286
+);
+@each $key, $val in $text-size {
+    .text-#{$key} {
+        font-size: $val * $text-size-base;
+    }
+}
+
+//margin padding 
+$spacing-types: (m: margin, p: padding);
+$spacing-directions: (
+    t: top,
+    r: right,
+    b: bottom,
+    l: left
+);
+$spacing-sizes: (
+    0: 0,
+    1: 0.25,
+    2: 0.5,
+    3: 1,
+    4: 1.5,
+    5: 3
+);
+$spacing-size-base: 1rem;
+
+@each $typeKey, $typeVal in $spacing-types {
+    @each $directionKey, $directionVal in $spacing-directions {
+        @each $sizeKey, $sizeVal in $spacing-sizes {
+            //mt-0 0rem
+            .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+                #{$typeVal}-#{$directionVal}: $sizeVal * $spacing-size-base;
+            }
+        }
+    }
+
+    @each $sizeKey, $sizeVal in $spacing-sizes {
+        //mx-0 0rem
+        .#{$typeKey}x-#{$sizeKey} {
+            #{$typeVal}-left: $sizeVal * $spacing-size-base;
+            #{$typeVal}-right: $sizeVal * $spacing-size-base;
+        }
+        //my-0 0rem
+        .#{$typeKey}y-#{$sizeKey} {
+            #{$typeVal}-top: $sizeVal * $spacing-size-base;
+            #{$typeVal}-bottom: $sizeVal * $spacing-size-base;
+        }
+        //-0 0rem
+        .#{$typeKey}-#{$sizeKey} {
+            #{$typeVal}: $sizeVal * $spacing-size-base;
+        }
+    }
+}
+
+//text weight
+$text-weight: (
+    1: 100,
+    2: 200,
+    3: 300,
+    4: 400,
+    5: 500,
+    6: 600,
+    7: 700,
+    8: 800,
+    9: 900
+);
+@each $key, $val in $text-weight {
+    .text-weight-#{$key} {
+        font-weight: $val;
+    }
+}
+
+//position
+.pos-a {
+    position: absolute;
+}
+.pos-r {
+    position: relative;
+}
+$pos-sizes: (
+    0: 0,
+    1: 0.25,
+    2: 0.5,
+    3: 1,
+    4: 1.5,
+    5: 3
+);
+$pos-size-base: 1rem;
+@each $directionVal in (left, top, right, bottom) {
+    @each $sizeKey, $sizeVal in $pos-sizes {
+        //t-1: top: 0.25rem;
+        .#{$directionVal}-#{$sizeKey} {
+            #{$directionVal}: $sizeVal * $pos-size-base;
+        }
+    }
+}
+
+//nav active
+.nav-active {
+    color: #1a73e8;
+    font-weight: 700;
+}
+
+//singer active
+.singer-active {
+    color: white;
+    background-color: #1a73e8;
+    border-radius: 0.6rem;
+}
