@@ -7,7 +7,9 @@
         />
 
         <!-- 子路由（推荐 歌手 排行 搜索） -->
-        <router-view></router-view>
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
     </div>
 </template>
 

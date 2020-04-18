@@ -1,6 +1,6 @@
 <template>
     <div class="main-header">
-        <div class="title text-primary text-lg text-weight-7 text-center">
+        <div class="title text-primary text-lg text-weight-7 text-center pt-2">
             {{ title }}
         </div>
 

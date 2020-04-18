@@ -11,7 +11,7 @@
                     v-for="(category, index) of value" 
                     :key="category.id"
                     :class="{ 'singer-active': activeIndex[key] === index }"
-                    @click="activeIndex[key] = index"
+                    @click="categoryClick(key, index)"
                 >
                     {{ category.name }}
                 </li>
@@ -35,6 +35,16 @@ export default {
                 genre: 0,
                 area: 0
             }
+        }
+    },
+    methods: {
+        categoryClick(key, index) {
+            this.activeIndex[key] = index
+            const params = {}
+            for (let key in this.activeIndex) {
+                params[key] = this.singerCategory[key][this.activeIndex[key]].id
+            }
+            this.$emit('category-click', params)
         }
     }
 }

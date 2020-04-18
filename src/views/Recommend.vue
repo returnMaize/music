@@ -51,17 +51,17 @@ export default {
         },
         //获取歌单列表数据（热门歌曲）
         async fetchHotSong() {
-            const res = await this.$http.get('songList/hot');
+            const res = await this.$http.get('/recommend/playlist');
             this.hotSong = res.data.data.list.map(item => ({
-                id: item.dissid,
-                img: item.imgurl,
-                title: item.creator.name,
-                info: item.dissname
+                id: item.tid,
+                img: item.cover_url_small,
+                title: item.title,
+                info: item.creator_info.nick
             }))
         }
     },
     created() {
-        this.fetchSwiperList();
+        // this.fetchSwiperList();
         this.fetchHotSong();
     },
     components: {
